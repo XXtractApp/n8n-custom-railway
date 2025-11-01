@@ -30,5 +30,8 @@ USER node
 # Expose n8n port
 EXPOSE 5678
 
+# Use the same entrypoint as the base image
+ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
+
 # Start n8n
 CMD ["n8n"]
