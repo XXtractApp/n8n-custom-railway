@@ -24,14 +24,8 @@ RUN pip3 install --break-system-packages --no-cache-dir \
     PyPDF2==3.0.1 \
     numpy==1.26.3
 
-# Switch back to node user for security
-USER node
+# DON'T switch back to node user - let the entrypoint handle it
+# USER node <-- REMOVED
 
 # Expose n8n port
 EXPOSE 5678
-
-# Use the same entrypoint as the base image
-ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
-
-# Start n8n
-CMD ["n8n"]
