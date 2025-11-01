@@ -9,12 +9,10 @@ RUN apk add --no-cache \
     python3 \
     py3-pip \
     openjdk11-jre \
-    git \
-    && python3 -m ensurepip \
-    && pip3 install --upgrade pip
+    git
 
-# Install Python libraries for document processing
-RUN pip3 install --no-cache-dir \
+# Install Python libraries with --break-system-packages flag
+RUN pip3 install --break-system-packages --no-cache-dir \
     tabula-py==2.8.2 \
     pandas==2.1.4 \
     openpyxl==3.1.2 \
