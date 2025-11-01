@@ -4,12 +4,17 @@ FROM n8nio/n8n:latest
 # Switch to root to install packages
 USER root
 
-# Install Python, pip, and Java (required for Tabula)
+# Install Python, Java, git, and build tools (needed for jpype1)
 RUN apk add --no-cache \
     python3 \
     py3-pip \
     openjdk11-jre \
-    git
+    openjdk11-jdk \
+    git \
+    g++ \
+    gcc \
+    musl-dev \
+    python3-dev
 
 # Install Python libraries with --break-system-packages flag
 RUN pip3 install --break-system-packages --no-cache-dir \
